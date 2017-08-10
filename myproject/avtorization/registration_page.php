@@ -1,4 +1,4 @@
-﻿						<?php require_once '/var/www/html/myproject/common/header.php'; ?> 
+﻿						<?php require_once __DIR__ . '/../common/header.php'; ?> 
 						<!-- Registration -->	
 						<?php require '/var/www/html/src/core/form/registration_form.php'; ?>
 						<!--  Exception during the registration attempt -->
@@ -10,7 +10,7 @@
 						<?php	endif; ?>
 
 						<a href="/index.php">Перейти на главную страницу</a>  
-						<?php require_once '/var/www/html/myproject/common/footer.php'; ?> 
+						<?php require_once __DIR__ . '/../common/footer.php'; ?> 
 
 
 

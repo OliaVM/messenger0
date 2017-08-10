@@ -41,17 +41,17 @@ if (isset($_POST['button_show_coments'])) {
 }
 
 // Delete notes
-require_once '/var/www/html/myproject//private_func/delete_information.php';
+require_once __DIR__ . '/../private_func/delete_information.php';
 
 //display of information from database on page(with pagination)
 if (isset($_GET['key'])) {
 	switch ($_GET['key']) {
 				case 'indiv':
-				require_once '/var/www/html/myproject/common/notes_with_pagination_show.php';
+				require_once __DIR__ . '/notes_with_pagination_show.php';
 				$key='indiv'; 
 				break;
 				case 'all':
-				require_once '/var/www/html/myproject/common/notes_with_pagination_show_of_all_users.php';
+				require_once __DIR__ . '/notes_with_pagination_show_of_all_users.php';
 				$key='all'; 
 				break;
 	}

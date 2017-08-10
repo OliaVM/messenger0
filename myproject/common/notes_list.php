@@ -32,7 +32,7 @@
 				<input type='hidden' name="del_id" value="<?php echo $row['id']; ?>">
 				<input name="button_del" value="Удалить сообщение" type="submit">
 				<input type='hidden' name="red_id" value="<?php echo $row['id']; ?>">
-				<a href='http://myproject.local/private_func/editor.php?red_id=<?php echo $row['id']; ?>'>
+				<a href='../private_func/editor.php?red_id=<?php echo $row['id']; ?>'>
 				<input type='hidden' name="show_coments" value="<?php echo $row['id']; ?>">
 				<input name="button_show_coments" value="Посмотреть комментарии" type="submit">
 				Отредактировать сообщение</a>
@@ -44,6 +44,6 @@
 		<?php endif; ?>
 		<br>
 	<?php endforeach; ?>
-	<?php require '/var/www/html/src/core/pagination/contentPagination.php'; ?>
+	<?php require __DIR__ . '/../../src/core/pagination/contentPagination.php'; ?>
 <?php endif; ?>
 

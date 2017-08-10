@@ -9,7 +9,8 @@ if (!empty($_SESSION['id']) and isset($_SESSION['id'])) {
 	setcookie('login', '', time()); 
 	setcookie('key', '', time()); 
 
-	header("Location: http://myproject.local/index.php"); 
+	header("Location: ../index.php"); 
+	//header("Location: http://myproject.local/index.php"); 
 	//header("Location: http://192.168.50.5/index.php");
     exit; 
 }
