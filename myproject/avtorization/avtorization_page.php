@@ -1,7 +1,11 @@
 ﻿<?php require_once __DIR__ . '/../common/header.php'; ?>
 <?php //require_once '/var/www/html/myproject/common/header.php'; ?> 	 	
 <!-- Authorization -->
-<?php require __DIR__ . '/../../src/core/form/avtorization_form.php'; ?>
+<?php if (isset($exAvtoriz3) || isset($exAvtoriz4) || isset($exAvtoriz8)): ?>
+	<?php require __DIR__ . '/../../src/core/form/avtorization_form_save.php'; ?>
+<?php else: ?>
+	<?php require __DIR__ . '/../../src/core/form/avtorization_form.php'; ?>
+<?php endif; ?>
 <!-- Exception during the authorization attempt -->
 <?php	if (isset($exAvtoriz3)): ?> 
 		<h2 class="redcolor"><?php echo $exAvtoriz3; ?></h2>

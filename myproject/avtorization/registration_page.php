@@ -1,6 +1,10 @@
 ﻿						<?php require_once __DIR__ . '/../common/header.php'; ?> 
 						<!-- Registration -->	
-						<?php require '/var/www/html/src/core/form/registration_form.php'; ?>
+						<?php	if (isset($exRegistration5) || isset($exRegistration6)): ?> 
+							<?php require '/var/www/html/src/core/form/registration_form_save.php'; ?>
+						<?php else: ?>
+							<?php require '/var/www/html/src/core/form/registration_form.php'; ?>
+						<?php endif; ?>
 						<!--  Exception during the registration attempt -->
 						<?php	if (isset($exRegistration5)): ?> 
 							<h2 class="redcolor"><?php echo $exRegistration5; ?></h2>

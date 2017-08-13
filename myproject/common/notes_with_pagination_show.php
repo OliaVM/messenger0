@@ -6,7 +6,7 @@ if (isset($_GET['page'])) {
 	// Get the current page number from the URL
 	$page = $_GET['page']; 
 	// Define the total count of articles in the database
-	$query=$basa->query("SELECT id FROM notes");
+	$query=$basa->query("SELECT id FROM notes WHERE user_id=".$_SESSION['id']);
 	$posts =$query->rowCount();
 	
 	// Find the total count of pages

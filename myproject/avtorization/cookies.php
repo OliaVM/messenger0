@@ -1,7 +1,7 @@
 <?php
 	if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 		//If a cookies is not empty
-		if (!empty($_COOKIE['login']) and !empty($_COOKIE['key']) ) {
+		if (!empty($_COOKIE['login']) and !empty($_COOKIE['key'])) {
 			//Save the username and key from the COOKIE to the variables
 			$login = $_COOKIE['login']; 
 			$key = $_COOKIE['key']; 

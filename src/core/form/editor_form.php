@@ -3,7 +3,6 @@
 	<?php if (isset($_GET['red_id'])): ?>
 		<?php foreach ($row5 as $row): ?>
 		    <form method="POST">
-				<br> 
 				<p><h2><?php echo $row['id']; ?></h2></p>
 				<p><h2><?php echo $row['note_date']; ?></h2></p>
 				Введите название заметки(объемом до 150 знаков): 

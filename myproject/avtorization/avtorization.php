@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 							$_SESSION['id'] = $rowUser['id']; 
 							$_SESSION['login'] = $rowUser['login']; 
 							$_SESSION['password'] = $rowUser['password']; 
-														
+																		
 							//Verify whether the checkbox 'Remember me' is clicked 
 							if (!empty($_REQUEST['remember']) and $_REQUEST['remember'] == 1) {
 								$key = generateSalt(); 

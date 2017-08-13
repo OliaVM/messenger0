@@ -8,7 +8,6 @@ if(isset($_POST["go"])){
 			if(!empty($_POST['note_title']) && !empty($_POST['note_text']) && !empty($_POST['short_text'])) {
 				// The calculation of the date of publication
 				$data = GetFullNowDateInCity(7);
-				
 				//Adding information in the database
 				$sql="INSERT INTO notes (user_id, note_title, note_text, short_text, note_date) VALUES (:user_id, :note_title, :note_text, :short_text, :data)"; 
 				submitDb($sql, $basa, $data);
@@ -20,7 +19,7 @@ if(isset($_POST["go"])){
 		}
 		catch (Exception $ex2) {
 			// Print the exception message
-			$x2 = $ex2->getMessage();
+			$NotesAddEx = $ex2->getMessage();
 		}
 	}
 }
@@ -34,7 +33,7 @@ if (isset($_POST['sentComment'])) {
 	}
 }
 
-//show coments from the databases
+//show comments from the databases
 if (isset($_POST['button_show_coments'])) {
 	$sql3 = "SELECT n.note_date, n.note_title, n.note_text, n.short_text, n.id, GROUP_CONCAT(CONCAT_WS(',', c.comment_date, c.login, c.comment)), c.article_id FROM notes n INNER JOIN comments c ON c.article_id = n.id  WHERE n.id = '".$_POST['show_coments']."' GROUP BY n.id";
 	$list2 =  getNotesList($basa, $sql3);
