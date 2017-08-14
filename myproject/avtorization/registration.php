@@ -12,10 +12,14 @@ if (isset($_POST['submit2'])) {
 			$surname = $_REQUEST['surname'];
 			$date_of_birth = $basa->quote($_REQUEST['date_of_birth']);
 			$gender = $_REQUEST['gender'];
-					
+				
+
+
 			// Performs the validation to freedom login. The response from the database record into a variable $row
 			$sql = 'SELECT * FROM users  WHERE login="'.$login.'"';
-			$isLoginFree = $basa->query($sql);
+			$isLoginFree = $basa->prepare($sql);
+			$isLoginFree->execute();
+			//$isLoginFree = $basa->query($sql);
 			$row = $isLoginFree->fetch(PDO::FETCH_ASSOC);
 
 			try {
