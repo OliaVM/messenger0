@@ -12,7 +12,9 @@
 						<?php	if (isset($exRegistration6)): ?>  
 							<h2 class="redcolor"><?php echo $exRegistration6; ?></h2>
 						<?php	endif; ?>
-
+						<?php	if (isset($exRegSymbol)): ?>  
+							<?php echo "<h2>" . $exRegSymbol . "</h2>"; ?>
+						<?php	endif; ?> 
 						<a href="/index.php">Перейти на главную страницу</a>  
 						<?php require_once __DIR__ . '/../common/footer.php'; ?> 
 

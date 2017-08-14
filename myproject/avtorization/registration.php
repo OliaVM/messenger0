@@ -10,27 +10,50 @@ if (isset($_POST['submit2'])) {
 			$email = $_REQUEST['email2']; 
 			$name = $_REQUEST['name'];
 			$surname = $_REQUEST['surname'];
-			$date_of_birth = $_REQUEST['date_of_birth'];
+			$date_of_birth = $basa->quote($_REQUEST['date_of_birth']);
 			$gender = $_REQUEST['gender'];
 					
 			// Performs the validation to freedom login. The response from the database record into a variable $row
 			$sql = 'SELECT * FROM users  WHERE login="'.$login.'"';
 			$isLoginFree = $basa->query($sql);
 			$row = $isLoginFree->fetch(PDO::FETCH_ASSOC);
-						
+
 			try {
 				//If $row is empty - the login is free
 				if (!isset($row['login'])) {
-					//Generate the salt using the function generateSalt() and salt the password
-					$salt = generateSalt(); 
-					$saltedPassword = md5($password.$salt); 
+					try	{
+						if (preg_match("/[a-zA-Z0-9а-яА-Я]{3,20}/", $_REQUEST['login2'])) {
+							//$_REQUEST['login2'], $_REQUEST['name'], $_REQUEST['surname']
+							//Generate the salt using the function generateSalt() and salt the password
+							$salt = generateSalt(); 
+							$saltedPassword = md5($password.$salt); 
 
-					// Added information to the database from the form
-					$sql2 = 'INSERT INTO users SET login="'.$login.'", password="'.$saltedPassword.'", salt="'.$salt.'", email="'.$email.'", name="'.$name.'", surname="'.$surname.'", date_of_birth="'.$date_of_birth.'", gender="'.$gender.'"';
-					$prep = $basa->prepare($sql2);
-					$basa->query($sql2);
-					//The message about the successful registration
-					echo "<script language='javascript'> alert('Вы успешно зарегистрированы!'); </script>";
+							// Added information to the database from the form
+							$sql2 = 'INSERT INTO users (login, password, salt, email, name, 
+							surname, date_of_birth, gender) VALUES (:login, :password, :salt, :email, :name, :surname, :date_of_birth, :gender)';
+							$prep = $basa->prepare($sql2);
+							$prep->bindValue(':login', $login, PDO::PARAM_STR);
+							$prep->bindValue(':password', $saltedPassword, PDO::PARAM_STR);
+							$prep->bindValue(':salt', $salt, PDO::PARAM_STR);
+							$prep->bindValue(':email', $email, PDO::PARAM_STR);
+							$prep->bindValue(':name', $name, PDO::PARAM_STR);
+							$prep->bindValue(':surname', $surname, PDO::PARAM_STR);
+							$prep->bindValue(':date_of_birth', $date_of_birth, PDO::PARAM_STR);
+							$prep->bindValue(':gender', $gender, PDO::PARAM_STR);
+							$prep->execute(); 
+										
+							//The message about the successful registration
+							echo "<script language='javascript'> alert('Вы успешно зарегистрированы!'); </script>";
+						}
+						else {
+							 throw new Exception('Вы можете использовать только буквы и цифры. Число буквенных символов должно быть не меньше трех и не больше 20');
+						}
+					}
+					catch (Exception $ex10) {
+						//Print the exception message
+						$exRegSymbol = $ex10->getMessage();
+					}
+						
 				}
 				//If $row is not empty - the login is not free
 				else {
@@ -42,6 +65,7 @@ if (isset($_POST['submit2'])) {
 				//Print the exception message
 				$exRegistration6 = $ex6->getMessage();
 			}
+			
 		}
 		//Not filled any of the fields
 		else {

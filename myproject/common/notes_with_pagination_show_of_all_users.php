@@ -4,6 +4,7 @@ if (isset($_GET['page'])) {
 	// the count of articles, displayed on the page
 	$num = 6; 
 	// Get the current page number from the URL
+	$_GET['page'] = intval($_GET['page']);
 	$page = $_GET['page']; 
 	// Define the total count of articles in the database
 	$query=$basa->query("SELECT id FROM notes");
