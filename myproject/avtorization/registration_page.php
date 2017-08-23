@@ -5,6 +5,7 @@
 						<?php else: ?>
 							<?php require __DIR__ . '/../..//src/core/form/registration_form.php'; ?>
 						<?php endif; ?>
+							<?php echo "registr3"; ?>
 						<!--  Exception during the registration attempt -->
 						<?php	if (isset($exRegistration5)): ?> 
 							<h2 class="redcolor"><?php echo $exRegistration5; ?></h2>

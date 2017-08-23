@@ -24,7 +24,11 @@ if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
 						$prep->bindValue(':note_text', $_POST['note_text'], PDO::PARAM_STR);
 						$prep->bindValue(':id', $_GET['red_id'], PDO::PARAM_INT);
 						$prep->execute(); 
+<<<<<<< HEAD
 						header("Location: ../index.php?page=1&key=indiv&page_name=content");	
+=======
+						header("Location: ../index.php?page=1&key=indivpage_name=content");	
+>>>>>>> dc0ba4b324acb3b305154e40501cdfc4036a3143
 						//header("Location: http://myproject.local/index.php?page=1&key=indiv");	
 						//http://myproject.local/index.php?page=1
 					}
