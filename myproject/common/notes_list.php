@@ -32,10 +32,9 @@
 				<input type='hidden' name="del_id" value="<?php echo $row['id']; ?>">
 				<input name="button_del" value="Удалить сообщение" type="submit">
 				<input type='hidden' name="red_id" value="<?php echo $row['id']; ?>">
-				<a href='../private_func/editor.php?red_id=<?php echo $row['id']; ?>'>
+				<a href='index.php?page_name=editor&red_id=<?php echo $row['id']; ?>'>Отредактировать сообщение</a>
 				<input type='hidden' name="show_coments" value="<?php echo $row['id']; ?>">
 				<input name="button_show_coments" value="Посмотреть комментарии" type="submit">
-				Отредактировать сообщение</a>
 				<br>Введите комментарий: 
 				<textarea  type="text" name="comment" rows="1" cols="70" maxlength="500"></textarea><br>
 				<input type='hidden' name="article_id" value="<?php echo $row['id']; ?>">

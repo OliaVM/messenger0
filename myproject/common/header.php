@@ -9,6 +9,25 @@ $basa  = getDbConnection($dbConfig['dns'], $dbConfig['user'], $dbConfig['passwor
 //,$dbConfig['options']
 $basa->exec("set names utf8");
 
+//router
+if (isset($_GET['page_name'])) {
+	$page_name = $_GET['page_name'];
+	switch ($_GET['page_name']) {
+		case 'content':
+		$path = "/";
+		break;
+		case 'avtorization_page':
+		$path = "/avtorization/";
+		break;
+		case 'registration_page':
+		$path = "/avtorization/";
+		break;
+		case 'editor':
+		$path = "/private_func/";
+		break;
+	}
+}
+
 //Cookie existence check
 require_once __DIR__ . '/../avtorization/cookies.php';
 //Authorization
@@ -34,26 +53,10 @@ require_once  __DIR__ . '/../common/work_with_databases.php';
 	  <link type="text/css" rel="stylesheet" href="../style/bootstrap-responsive.css">
 	</head>
 	<body>
-	<div class="row-fluid">
-		<div class="span9" id="box12">
-			<h1>Messenger</h1>
-		</div>
-	</div>
-	<div class="container-fluid">
-	  <div class="row-fluid">
-	    <div class="span3" id="box4" id="menu"> 
-			<ul>
-				<li><a href="../index.php?page=1&key=all">Главная</a></li>
-				<li><a href="../avtorization/avtorization_page.php">Авторизоваться</a></li>
-				<li><a href="../avtorization/registration_page.php">Зарегистрироваться</a></li>
-				<?php if (isset($_SESSION['login'])): ?>
-					<li><a href="../index.php?page=1&key=indiv">Посмотреть список своих сообщений, добавить новую запись</a></li>
-					<!-- Display the exit button from the session -->
-					<?php require_once __DIR__ . '/../../src/core/form/exit_button.php' ?>
-				<?php endif; ?>
-				<li><a href="../index.php?page=1&key=all">Посмотреть список всех тем</a></li>
-			</ul>
-		</div>
-		<div class="span6" id="box8">
-			<div>
+		<div class="row-fluid">
+			<div class="span9" id="box12">
+				<h1>Messenger</h1>
+	
+		
+		
 			    

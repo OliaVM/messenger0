@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../common/header.php'; ?> 
+<?php //require_once __DIR__ . '/../common/header.php'; ?> 
 <?php
 if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
 	//Get the record from databases and display on the screen for editing
@@ -24,7 +24,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
 						$prep->bindValue(':note_text', $_POST['note_text'], PDO::PARAM_STR);
 						$prep->bindValue(':id', $_GET['red_id'], PDO::PARAM_INT);
 						$prep->execute(); 
-						header("Location: ../index.php?page=1&key=indiv");	
+						header("Location: ../index.php?page=1&key=indiv&page_name=content");	
 						//header("Location: http://myproject.local/index.php?page=1&key=indiv");	
 						//http://myproject.local/index.php?page=1
 					}
@@ -52,4 +52,4 @@ if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
 require_once __DIR__ . '/../../src/core/form/editor_form.php';
 require_once __DIR__ . '/../common/notes_list.php'; 
 ?>
-<?php require_once __DIR__ . '/../common/footer.php'; ?> 
+<?php //require_once __DIR__ . '/../common/footer.php'; ?> 

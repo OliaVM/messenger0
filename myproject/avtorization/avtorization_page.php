@@ -1,4 +1,4 @@
-﻿<?php require_once __DIR__ . '/../common/header.php'; ?>
+﻿<?php //require_once __DIR__ . '/../common/header.php'; ?>
 <?php //require_once '/var/www/html/myproject/common/header.php'; ?> 	 	
 <!-- Authorization -->
 <?php if (isset($exAvtoriz3) || isset($exAvtoriz4) || isset($exAvtoriz8)): ?>
@@ -16,9 +16,9 @@
 <?php	if (isset($exAvtoriz8)): ?>  
 		<h2 class="redcolor"><?php echo $exAvtoriz8; ?></h2>
 <?php	endif; ?> 
-<a href="/index.php">Перейти на главную страницу</a> 
+<a href="/index.php?page_name=content">Перейти на главную страницу</a> 
 <?php //require_once '/var/www/html/myproject/common/footer.php'; ?> 
-<?php require_once __DIR__ . '/../common/footer.php'; ?> 
+<?php //require_once __DIR__ . '/../common/footer.php'; ?> 
 
 
 
